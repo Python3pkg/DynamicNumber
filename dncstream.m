@@ -14,21 +14,21 @@ narginchk(0, 2)
 
 print_stream = 0;
 
-global dnstream
+global dnstreams
 
 for i = 1:nargin
     if isstruct(varargin{i})
-        dnstream.dncurrent = varargin{i};
+        dnstreams.dncurrent = varargin{i};
     elseif ischar(varargin{i}) && strcmp(varargin{i},'p')
             print_stream = 1;
     end;
 end;
 
 if nargout == 1 
-    varargout{1} = dnstream.dncurrent;
+    varargout{1} = dnstreams.dncurrent;
 else
     if print_stream
-        disp(dnstream.dncurrent);
+        disp(dnstreams.dncurrent);
     end
 end
 

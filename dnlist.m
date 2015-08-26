@@ -23,10 +23,10 @@ fprintf(f,'%s\n',strcat('\dnsetcurrent{',name,'}'));
 fclose(f);
 
 % create stream
-global dnstream
-dnstream.(genvarname(name)).dir = f_dir;
-dnstream.(genvarname(name)).name = name;
-dnstream.dncurrent = dnstream.(genvarname(name));
+global dnstreams
+dnstreams.(genvarname(name)).dir = f_dir;
+dnstreams.(genvarname(name)).name = name;
+dnstreams.dncurrent = dnstreams.(genvarname(name));
 
 end
 
