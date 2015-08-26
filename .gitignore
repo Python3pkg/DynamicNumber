@@ -1,0 +1,7 @@
+.idea
+*.pyc
+*.aux
+*.log
+*.pdf
+*.gz
+*.dnlist
