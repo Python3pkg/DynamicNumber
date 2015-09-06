@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage{dynamicnumber}
+\usepackage{SIunits}
+
+\begin{document}
+\dnreadfile{var}
+
+Dit is een test.
+
+\dnget{test}all done.
+
+\pgfkeys{/dynamicnumber/var/test = 11}
+
+
+
+\dnget{test} all done.
+
+\end{document}
