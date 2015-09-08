@@ -1,5 +1,5 @@
-import dn
+from dn import dn
 
 if __name__ == '__main__':
-    dn.dnlist('var')
-    dn.dnadd('test',10,'N')
+    var = dn("var")
+    var.add("test", 90)

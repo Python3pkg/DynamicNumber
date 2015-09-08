@@ -1,48 +1,61 @@
 __author__ = 'Olivier Pieters'
 
-dynamic_number = {"streams": {}, "current stream": None}
+"""Dynamic Number module.
 
-def current_stream(stream=None, p=False):
-    # set new stream if needed
-    if stream is not None:
-        dynamic_number["current stream"] = stream
+This module adds a variable (and more generally, even string) export option to LaTeX. This way, symbolic links between Python and LaTeX are possible so variables are always up to date, even within paragraphs.
 
-    # print stream if needed
-    if p:
-        print(dynamic_number["current stream"])
+"""
 
-    # return string
-    return dynamic_number["current stream"]
+class dn:
+    """Dynamic Number class
 
-def dnadd(name, num, unit=None, stream=None):
+    Dynamic Number (dn) objects represent a list of variables with unique symbolic names. Different list can be used side by side.
+    """
+    def __init__(self, name, file_dir="."):
+        """Construct a dn-object.
 
-    # check if unit provided
-    add_unit = False
-    if unit is not None:
-        add_unit = True
-        unit = str(unit)
-    # set stream if not provided
-    if stream is None:
-        stream = current_stream()
+        name     -- indicates the Dynamic Number list name (should not include a file extension!)
+        file_dir -- directory to store the dn list, by default the current directory is used.
+        """
 
-    # convert num to string
-    num = str(num)
+        self.name = name
+        self.filename = name + ".dnlist"
 
-    # write to file
-    f = open(stream["dir"], 'a')
-    f.write("\\pgfkeys{dynamicnumber/%s/%s = %s}\n" % (stream["name"], name, num))
-    f.close()
+        try:
+            if file_dir[-1] == "/":
+                self.file_dir = file_dir + self.filename
+            else:
+                self.file_dir = file_dir + "/" + self.filename
+        except IndexError:
+            print("File directory incorrect. Using current directory")
+            self.file_dir = "./" + filename
 
-def dnlist(name, file_dir="."):
-    file_name = name + ".dnlist"
-    file_dir = file_dir + "/" + file_name
+        f = open(self.file_dir,'w')
+        f.write("\\dndeclare{%s}\n" % name)
+        f.write("\\dnsetcurrent{%s}\n" % name)
+        f.close()
 
-    # write to file
-    f = open(file_dir,'w')
-    f.write("\\dndeclare{%s}\n" % name)
-    f.write("\\dnsetcurrent{%s}\n" % name)
-    f.close()
+    def add(self, name, num, unit=None):
+        """Add symbolic link to Dynamic Number list.
 
-    # set class variables
-    dynamic_number["streams"][name] = {"dir": file_dir, "name": name}
-    dynamic_number["current stream"] = dynamic_number["streams"][name]
+        name -- name of the symbolic link
+        num  -- value of the link (if not a string, conversion is done with str())
+        unit -- if num is a numerical value, a unit can be added to invoke the \unit{}{} LaTeX command
+        """
+        # check if unit provided
+        if unit is not None:
+            add_unit = True
+            unit = str(unit)
+        else:
+            add_unit = False
+
+        # convert num to string
+        num = str(num)
+
+        # write to file
+        f = open(self.file_dir, 'a')
+        if add_unit:
+            f.write("\\pgfkeys{dynamicnumber/%s/%s = \unit{%s}{%s}}\n" % (self.name, name, num, unit))
+        else:
+            f.write("\\pgfkeys{dynamicnumber/%s/%s = %s}\n" % (self.name, name, num))
+        f.close()
