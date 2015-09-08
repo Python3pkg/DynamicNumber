@@ -35,12 +35,12 @@ class dn:
         f.write("\\dnsetcurrent{%s}\n" % name)
         f.close()
 
-    def add(self, name, num, unit=None):
+    def add(self, name, value, unit=None):
         """Add symbolic link to Dynamic Number list.
 
-        name -- name of the symbolic link
-        num  -- value of the link (if not a string, conversion is done with str())
-        unit -- if num is a numerical value, a unit can be added to invoke the \unit{}{} LaTeX command
+        name  -- name of the symbolic link
+        value -- value of the link (if not a string, conversion is done with str())
+        unit  -- if value is a numerical value, a unit can be added to invoke the \unit{}{} LaTeX command
         """
         # check if unit provided
         if unit is not None:
@@ -49,13 +49,13 @@ class dn:
         else:
             add_unit = False
 
-        # convert num to string
-        num = str(num)
+        # convert value to string
+        value = str(value)
 
         # write to file
         f = open(self.file_dir, 'a')
         if add_unit:
-            f.write("\\pgfkeys{dynamicnumber/%s/%s = \unit{%s}{%s}}\n" % (self.name, name, num, unit))
+            f.write("\\pgfkeys{dynamicnumber/%s/%s = \unit{%s}{%s}}\n" % (self.name, name, value, unit))
         else:
-            f.write("\\pgfkeys{dynamicnumber/%s/%s = %s}\n" % (self.name, name, num))
+            f.write("\\pgfkeys{dynamicnumber/%s/%s = %s}\n" % (self.name, name, value))
         f.close()
