@@ -17,12 +17,12 @@ TODO
 
 ### MATLAB
 
-Add the necessary functions to MATLAB's path. 
+Add the necessary functions to MATLAB's path.
 
 1. Clone the directory in your MATLAB folder (`Documents/MATLAB`).
-*  Now the contents should be in `Documents/MATLAB/DynamicNumber`.
-*  Open MATLAB.
-*  Set path to include the cloned folder. The Set path can be found in the File menu on older MATLAB installations or HOME, Environment in newer installations.
+2. Now the contents should be in `Documents/MATLAB/DynamicNumber`.
+3. Open MATLAB.
+4. Set path to include the cloned folder. The Set path can be found in the File menu on older MATLAB installations or HOME, Environment in newer installations.
 
 ### Python
 
@@ -31,7 +31,7 @@ TODO
 Quick start
 -----------
 
-### LaTeX 
+### LaTeX
 
 LaTeX usage is very straightforward. Load the package with `\usepackage{dynamicnumber}` and next load a dyamic number list with `\dnreadfile{list}`. Now you can start using your dynamic variables with `\dnget{variable}`.
 
@@ -39,23 +39,25 @@ More information and additional commands can be found in the documentation.
 
 **Attention!** Do not attempt to create a `pgfkey` with the name `dynamicnumber`, it will conflict with the internal workings of the package.
 
-### MATLAB
+### MATLAB and Python
 
-First you need to create a list in with the *dynamic numbers* will be stored. This is done with the `dnlist` command: `dnlist(list_name, list_directory)`. If the list should be created in the current directory, `list_directory` can be omitted.
+Create a dynamic number list with the `dn()` command, then add symbolic links with the `add`-method.
 
-Once a list has been created, start adding values with `dnadd(name, number)`. `name` is the symbolic name, used to get the value in LaTeX, `number` is the number or LaTeX expression to be stored. 
+The `add`-method requires at least 2 arguments: the symbolic link name and a value (either numerical or string). The optinal third can specify a unit for the value. The symbolic link will be stored to typeset both number and unit in a nice way, with the `units` package (`\unit{<value}{<unit>}`).
 
-**Note** that because of the way MATLAB parses these strings one backslash (` \ `) should be used, not two! So we write: `dnadd(fraction,'\frac{1}{2}')`.
+Example
 
-**Attention!** Do not create a *global* variable with the name `dnstreams`. This name is reserved for library use.
+```Some complicated commands, that in the end assign the following value to temperature:
+temparture = 23.4
+temp_predictions = dn('TemperaturePredictions')
+temp_predictions.add('tomorrow',temparture,'C')
+```
 
-### Python
-
-TODO
+**Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also use for escape sequences.
 
 ### Contributions
 
-The libraries are basic in a sence they do not have a lot of features of options. This is intintional. Users can easily adopt them to suit their own needs without having to go through 100s of lines of code and the learning curve is very small. So the main goal is to have a library that support many platforms, is identical on all of those and is simple to use. 
+The libraries are basic in a sence they do not have a lot of features of options. This is intintional. Users can easily adopt them to suit their own needs without having to go through 100s of lines of code and the learning curve is very small. So the main goal is to have a library that support many platforms, is identical on all of those and is simple to use.
 
 Bug fixes and small feature improvements are always welcome, you can use a pull request and/or contact me via [my website](users.ugent.be/~opieters) or by email on `dynamic (underscore) number (at) opieters (dot) be`.
 
@@ -63,6 +65,3 @@ Bug fixes and small feature improvements are always welcome, you can use a pull 
 ### License
 
 See the `LICENSE` file.
-
-
-
