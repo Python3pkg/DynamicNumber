@@ -24,9 +24,9 @@
 
 % define a new list of dynamic values
 \DeclareDocumentCommand{\dndeclare}{m}{%
-    \pgfkeys{
-        /dynamicnumber/#1.is family,
-        /dynamicnumber/#1.unknown/.style = {\pgfkeyscurrentpath/\pgfkeyscurrentname/.initial = ##1}
+    \pgfkeys{%
+        /dynamicnumber/#1/.is family,
+        /dynamicnumber/#1/.unknown/.style = {\pgfkeyscurrentpath/\pgfkeyscurrentname/.initial = ##1}
     }%
 }
 
@@ -37,7 +37,7 @@
 	}
 	{%
 		\RenewDocumentCommand{\dncurrent}{}{#1}%
-	}% 
+	}%
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % external functions     %
