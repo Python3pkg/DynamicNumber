@@ -45,12 +45,13 @@ Create a dynamic number list with the `dn()` command, then add symbolic links wi
 
 The `add`-method requires at least 2 arguments: the symbolic link name and a value (either numerical or string). The optinal third can specify a unit for the value. The symbolic link will be stored to typeset both number and unit in a nice way, with the `units` package (`\unit{<value}{<unit>}`).
 
-Example
+Example (in Python, MATLAB code is almost identical)
 
-```Some complicated commands, that in the end assign the following value to temperature:
+```python
+#Some complicated commands, that in the end assign the following value to temperature:
 temparture = 23.4
 temp_predictions = dn('TemperaturePredictions')
-temp_predictions.add('tomorrow',temparture,'C')
+temp_predictions.add('tomorrow',temparture,'C') # or \\Celcis instead of C
 ```
 
 **Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also use for escape sequences.
