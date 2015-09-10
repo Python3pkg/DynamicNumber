@@ -1,26 +1,29 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2008 by Olivier Pieters <opieters@ugent.be>
-% -----------------------------------------------------------
+% Copyright (C) 2015 by Olivier Pieters
+% -------------------------------------
 %
-% This file may be distributed and/or modified under the conditions of
-% the LaTeX Project Public License, either version 1.3c of this license
-% or (at your option) any later version.  The latest version of this
-% license is in:
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.2
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
 %
 %    http://www.latex-project.org/lppl.txt
 %
-% and version 1.3c or later is part of all distributions of LaTeX
-% version 2006/05/20 or later.
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
 %
 % \fi
 %
 % \iffalse
-%<package>\NeedsTeXFormat{LaTeX2e}[2003/12/01]%%%%
-%<package>\ProvidesPackage{dn}[2015/10/01 v1.0 Dynamic number package]%%%%
+%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<package>\ProvidesPackage{dn}
+%<package>   [2015/10/01 v1.0 Dynamic Number package: load symbolic links]
+%
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{dn}
+\usepackage{hyperref}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -30,7 +33,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{59}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -41,37 +44,36 @@
 %   Acute accent  \'     Left paren    \(     Right paren   \)
 %   Asterisk      \*     Plus          \+     Comma         \,
 %   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<<
-%   Equals        \=     Greater than  \>>     Question mark \?
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
 %   Commercial at \@     Left bracket  \[     Backslash     \\
 %   Right bracket \]     Circumflex    \^     Underscore    \_
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
 %
-% \changes{v1.0}{2015/10/01}{Initial version}
+% \changes{v1.0}{<YYYY>/<MM>/<DD>}{Initial version}
 %
 % \GetFileInfo{dn.sty}
 %
-% \DoNotIndex{\newcommand,\newenvironment}
-￼￼￼￼￼￼￼%
-% \title{The \textsf{Dynamic Number} package\thanks{This document
-%   corresponds to \textsf{dn}~\fileversion, dated \filedate.}}
-% \author{Olivier Pieters \\ \texttt{opieters@ugent.be}}
+% \DoNotIndex{<list of control sequences>}
+%
+% \title{The \textsf{dn} package\thanks{This document
+%   corresponds to \textsf{dn}~\fileversion,
+%   dated \filedate.}}
+% \author{Olivier Pieters \\ \texttt{no-mail}}
 %
 % \maketitle
 %
 % \begin{abstract}
-% TODO: abstract
+%   Put text here.
 % \end{abstract}
 %
 % \section{Introduction}
 %
-% TODO: introduction
+% Put text here.
 %
 % \section{Usage}
-%
-%
 %
 % \DescribeMacro{\dndeclare}
 % Declares a dynamic number (dn) list. \index{decare dn list|usage}  By creating
@@ -84,7 +86,7 @@
 % useful if multiple lists are used, so you do not always have to specify the dn
 % list if it is not the current one.
 %
-% \DescribeMacro{\dncurrent}
+%% \DescribeMacro{\dncurrent}
 % Returns the name of current dn list.  \index{current dn list|usage}  Returns
 % the current dn list and takes no arguments. This can be useful for debugging
 % purposes.
@@ -96,46 +98,50 @@
 % to this list.
 %
 % \DescribeMacro{\dnget}
-% Get symbolic link value.  \index{get dn list entry|usage}  Loads the symbolic link's value from the current dn list if no optional argument is present (optional argument is passed first). Otherwise, the optional argument specifies the dn list containing the symbolic link.
+% Get symbolic link value.  \index{get dn list entry|usage}  Loads the symbolic link's value from the current dn list if no optional argument is present (optional argument is passed first). Otherwise, the optional argument specifies the dn list containing the symbolic link
 %
 % \StopEventually{\PrintIndex}
 %
 % \section{Implementation}
 %
 % Load all required packages.
-% \begin{macrocode}
+%    \begin{macrocode}
 \RequirePackage{pgfkeys}
 \RequirePackage{xparse}
-% \end{macrocode}
+%    \end{macrocode}
 %
 % \begin{macro}{\@IfNoValueOrEmptyTF}
 % Tests if a parameter is empty using expl3.
 % Performs a double check to make sure it really is empty.
 % This is based on \href{http://tex.stackexchange.com/questions/63223/xparse-empty-arguments}{this}
 % StackExchange post.
-%   \begin{macrocode}
+%    \begin{macrocode}
 \ExplSyntaxOn
 \DeclareExpandableDocumentCommand{\@IfNoValueOrEmptyTF}{mmm}
  {
   \IfNoValueTF{#1}{#2}
    {
-%  \end{macrocode}
+%   \end{macrocode}
 %   Order: |{argument}{if empty}{if not empty}|
-%  \begin{macrocode}
+%   \begin{macrocode}
     \tl_if_empty:nTF {#1} {#2} {#3}
    }
  }
 \ExplSyntaxOff
-%   \end{macrocode}
+%    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\dndeclare}
-% The |\dndeclare| macro defines a list name and defines a |pgfkey|: |/dynamicnumber/|\meta{name>}|/|
+% The |\dndeclare| macro defines a list name and defines a |pgfkey| that stores
+% all symbolic links and their values. It always is a subdirectory of |/dynamicnumber|:
+% |/dynamicnumber/|\meta{name}|/|
 %    \begin{macrocode}
 \DeclareDocumentCommand{\dndeclare}{m}{%
     \pgfkeys{%
         /dynamicnumber/#1/.is family,
-        /dynamicnumber/#1/.unknown/.style = {\pgfkeyscurrentpath/\pgfkeyscurrentname/.initial = ##1}
+        /dynamicnumber/#1/.unknown/.style = {%
+            \pgfkeyscurrentpath/\pgfkeyscurrentname/.initial = ##1%
+        }
     }%
 }
 %    \end{macrocode}
@@ -188,7 +194,9 @@
 % (hence optional argument), otherwise the current list will be used.
 %    \begin{macrocode}
 \DeclareDocumentCommand{\dnget}{O{} m}{%
-\@IfNoValueOrEmptyTF{#1}{\pgfkeysvalueof{/dynamicnumber/\dncurrent/#2}}{\pgfkeysvalueof{/dynamicnumber/#1/#2}}%
+\@IfNoValueOrEmptyTF{#1}{%
+    \pgfkeysvalueof{/dynamicnumber/\dncurrent/#2}}{%
+    \pgfkeysvalueof{/dynamicnumber/#1/#2}}%
 }
 \endinput
 }
