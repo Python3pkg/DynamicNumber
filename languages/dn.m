@@ -6,7 +6,6 @@ classdef dn
     end
     methods
         function obj = dn(list_name, varargin)
-            disp(nargin)
             if (nargin<1) || (nargin>2)
                 error('Incorrect number of input arguments.')
             end
