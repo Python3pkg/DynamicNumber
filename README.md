@@ -1,5 +1,5 @@
-README
-======
+Dynamic Number
+==============
 
 What is it?
 -----------
@@ -10,10 +10,17 @@ Installation
 ------------
 
 Depending on your confinguration, one or more might not be applicable.
+All the supported languages have a file in the `languages` folder. Currently
+only MATLAB and Python are supported to produce Dynamic Number (dn) list files.
 
 ### LaTeX
 
-TODO
+Create the class file by running the installation file: `latex dn.ins`.
+Then copy the file to a directory LaTeX searches.
+
+**TODO**
+
+Extract the documentation to pdf with: `pdflatex dn.dtx`.
 
 ### MATLAB
 
