@@ -6,3 +6,7 @@
 *.gz
 *.dnlist
 *~
+*.glo
+*.idx
+*.out
+*.sty
