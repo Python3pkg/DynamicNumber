@@ -45,7 +45,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % read dynamic number list from file
-\DeclareDocumentCommand{\dnreadfile}{m}{%
+\DeclareDocumentCommand{\dnload}{m}{%
 \newread\ccinstream
 \immediate\openin\ccinstream=#1.dnlist
 \@whilesw\unless\ifeof\ccinstream\fi{%
@@ -56,8 +56,8 @@
 }
 
 % get a dynamic value
-\DeclareDocumentCommand{\dnget}{m O{}}{%
-\@IfNoValueOrEmptyTF{#2}{\pgfkeysvalueof{/dynamicnumber/\dncurrent/#1}}{\pgfkeysvalueof{/dynamicnumber/#2/#1}}%
+\DeclareDocumentCommand{\dnget}{O{} m}{%
+\@IfNoValueOrEmptyTF{#1}{\pgfkeysvalueof{/dynamicnumber/\dncurrent/#2}}{\pgfkeysvalueof{/dynamicnumber/#1/#2}}%
 }
 \endinput
 
