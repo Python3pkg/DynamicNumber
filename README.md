@@ -4,23 +4,27 @@ Dynamic Number
 What is it?
 -----------
 
-Dynamically typeset numbers generated in different kinds of scripts in LaTeX. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
+Dynamically typeset values generated in different kinds of scripts in LaTeX. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
 
 Installation
 ------------
 
-Depending on your confinguration, one or more might not be applicable.
-All the supported languages have a file in the `languages` folder. Currently
-only MATLAB and Python are supported to produce Dynamic Number (dn) list files.
+Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (dn) list files.
 
 ### LaTeX
 
-Create the class file by running the installation file: `latex dn.ins`.
-Then copy the file to a directory LaTeX searches.
+#### Linux and OS X
 
-**TODO**
+Run the installation file in terminal: `source install.sh`.
 
-Extract the documentation to pdf with: `pdflatex dn.dtx`.
+#### Windows
+
+For Windows, there is not yet a script. You must install it manually and add it to MiKTeX.
+
+1. Open the command line (`CTRL-R` and type `cmd`).
+2. Create the package with: `latex dn.ins`.
+3. Extract the documentation to pdf with: `pdflatex dn.dtx`.
+4. Use the instructions in [this](http://tex.stackexchange.com/questions/2063/how-can-i-manually-install-a-package-on-miktex-windows)
 
 ### MATLAB
 
@@ -33,7 +37,9 @@ Add the necessary functions to MATLAB's path.
 
 ### Python
 
-TODO
+**TODO** Add to PyPI if stable.
+
+For the moment, add it to your project directory.
 
 Quick start
 -----------
