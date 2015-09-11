@@ -4,7 +4,9 @@ Dynamic Number
 What is it?
 -----------
 
-Dynamically typeset values generated in different kinds of scripts in LaTeX. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
+Dynamic Number dynamically typesets values generated in different kinds of scripts in LaTeX. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
+
+It can be used to import not only numerical values into LaTeX, but even strings and pieces of code are possible. The main repository is located in [this]() repository.
 
 Installation
 ------------
@@ -12,6 +14,8 @@ Installation
 Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (dn) list files.
 
 ### LaTeX
+
+Currently the package is also available on CTAN. This is the preferred way of installing LaTeX packages. You can thus download it using your favourite (La)TeX package manager. The instructions below are thus obsolete.
 
 #### Linux and OS X
 
