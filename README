@@ -50,7 +50,7 @@ Quick start
 
 ### LaTeX
 
-LaTeX usage is very straightforward. Load the package with `\usepackage{dynamicnumber}` and next load a dyamic number list with `\dnreadfile{list}`. Now you can start using your dynamic variables with `\dnget{variable}`.
+LaTeX usage is very straightforward. Load the package with `\usepackage{dn}` and next load a dyamic number list with `\dnreadfile{list}`. Now you can start using your dynamic variables with `\dnget{variable}`.
 
 More information and additional commands can be found in the documentation.
 
@@ -65,20 +65,19 @@ The `add`-method requires at least 2 arguments: the symbolic link name and a val
 Example (in Python, MATLAB code is almost identical)
 
 ```python
-#Some complicated commands, that in the end assign the following value to temperature:
-temparture = 23.4
+# Some computations and sensor readout to predict temperature tomorrow:
+temperature = 23.4
 temp_predictions = dn('TemperaturePredictions')
 temp_predictions.add('tomorrow',temparture,'C') # or \\Celcius instead of C
 ```
 
-**Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also use for escape sequences.
+**Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also used for escape sequences.
 
 ### Contributions
 
-The libraries are basic in a sence they do not have a lot of features of options. This is intintional. Users can easily adopt them to suit their own needs without having to go through 100s of lines of code and the learning curve is very small. So the main goal is to have a library that support many platforms, is identical on all of those and is simple to use.
+The libraries are basic in a sense that they do not have a lot of features or options. This is intentional. Users can easily adopt them to suit their own needs without having to go through 100s of lines of code and the learning curve is very small. So the main goal is to have a library that support many platforms, is (almost) identical on all these platforms and is simple to use.
 
-Bug fixes and small feature improvements are always welcome, you can use a pull request and/or contact me via [my website](users.ugent.be/~opieters) or by email on `dynamic (underscore) number (at) opieters (dot) be`.
-
+Bug fixes and small feature improvements are always welcome, you can use a pull request to add must-have features or perform bug fixes.
 
 ### License
 
