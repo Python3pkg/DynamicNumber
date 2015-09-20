@@ -13,7 +13,7 @@ ctanify: ${FILE}
 ${CONTRIBUTION}.sty: ${CONTRIBUTION}.ins ${CONTRIBUTION}.dtx
     yes | tex $<
 
-${FILE}: ${CONTRIBUTION}.dtx ${CONTRIBUTION}.ins ${CONTRIBUTION}.sty README ${CONTRIBUTION}-doc.pdf
+${FILE}: ${CONTRIBUTION}.dtx ${CONTRIBUTION}.ins ${CONTRIBUTION}.sty README LICENSE ${CONTRIBUTION}-doc.pdf
     ctanify $^
 
 upload: ctanify
