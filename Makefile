@@ -1,6 +1,6 @@
 CONTRIBUTION = dn
 NAME = Olivier Pieters
-EMAIL = olivier.pieters@ugent.be
+EMAIL = me@olivierpieters.be
 DIRECTORY = /macros/latex/contrib/${CONTRIBUTION}
 LICENSE = free
 FREEVERSION = other-free
@@ -11,10 +11,16 @@ export CONTRIBUTION VERSION NAME EMAIL SUMMARY DIRECTORY DONOTANNOUNCE ANNOUNCE 
 ctanify: ${FILE}
 
 ${CONTRIBUTION}.sty: ${CONTRIBUTION}.ins ${CONTRIBUTION}.dtx
-    yes | tex $<
+	yes | tex $<
 
-${FILE}: ${CONTRIBUTION}.dtx ${CONTRIBUTION}.ins ${CONTRIBUTION}.sty README LICENSE ${CONTRIBUTION}-doc.pdf
-    ctanify $^
+${CONTRIBUTION}.pdf: ${CONTRIBUTION}.dtx ${CONTRIBUTION}.sty
+	pdflatex $<
+
+${FILE}: ${CONTRIBUTION}.dtx ${CONTRIBUTION}.ins ${CONTRIBUTION}.sty README LICENSE.txt ${CONTRIBUTION}.pdf
+	ctanify $^
 
 upload: ctanify
-    ctanupload -p
+	ctanupload -p
+
+clean:
+	rm dn.aux dn.glo dn.idx dn.log dn.out dn.pdf dn.sty dn.tar.gz
