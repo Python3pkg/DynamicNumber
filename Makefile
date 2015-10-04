@@ -1,4 +1,4 @@
-CONTRIBUTION = dn
+CONTRIBUTION = dynamicnumber
 NAME = Olivier Pieters
 EMAIL = me@olivierpieters.be
 DIRECTORY = /macros/latex/contrib/${CONTRIBUTION}
@@ -23,4 +23,4 @@ upload: ctanify
 	ctanupload -p
 
 clean:
-	rm dn.aux dn.glo dn.idx dn.log dn.out dn.pdf dn.sty dn.tar.gz
+	rm dynamicnumber.aux dynamicnumber.glo dynamicnumber.idx dynamicnumber.log dynamicnumber.out dynamicnumber.pdf dynamicnumber.sty dynamicnumber.tar.gz
