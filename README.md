@@ -4,14 +4,16 @@ Dynamic Number
 What is it?
 -----------
 
-Dynamic Number dynamically typesets values generated in different kinds of scripts in LaTeX. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
+Dynamic Number dynamically typesets values generated in different kinds of scripts in LaTeX through the use of symbolic links. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
 
-It can be used to import not only numerical values into LaTeX, but even strings and pieces of code are possible. The main repository is located in [this]() repository.
+It can be used to import not only numerical values into LaTeX, but even strings and pieces of code are possible. The main repository is located in [this](https://github.com/opieters/DynamicNumber) repository.
+
+**Attention** The symbolic links mentioned here are ***NOT*** related in any kind to the symbolic links used in UNIX systems. See example below to see what is meant with a symbolic link.
 
 Installation
 ------------
 
-Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (dn) list files.
+Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (dn) list files (also called symbolic link lists).
 
 ### LaTeX
 
@@ -26,8 +28,8 @@ Run the installation file in terminal: `source install.sh`.
 For Windows, there is not yet a script. You must install it manually and add it to MiKTeX.
 
 1. Open the command line (`CTRL-R` and type `cmd`).
-2. Create the package with: `latex dn.ins`.
-3. Extract the documentation to pdf with: `pdflatex dn.dtx`.
+2. Create the package with: `latex dynamicnumber.ins`.
+3. Extract the documentation to pdf with: `pdflatex dynamicnumber.dtx`.
 4. Use the instructions in [this](http://tex.stackexchange.com/questions/2063/how-can-i-manually-install-a-package-on-miktex-windows)
 
 ### MATLAB
@@ -50,7 +52,7 @@ Quick start
 
 ### LaTeX
 
-LaTeX usage is very straightforward. Load the package with `\usepackage{dn}` and next load a dyamic number list with `\dnreadfile{list}`. Now you can start using your dynamic variables with `\dnget{variable}`.
+LaTeX usage is very straightforward. Load the package with `\usepackage{dynamicnumber}` and next load a symbolic link lists with `\dnreadfile{list}`. Now you can start using your dynamic variables with `\dnget{variable}`.
 
 More information and additional commands can be found in the documentation.
 
@@ -58,9 +60,9 @@ More information and additional commands can be found in the documentation.
 
 ### MATLAB and Python
 
-Create a dynamic number list with the `dn()` command, then add symbolic links with the `add`-method.
+Create a symbolic link lists with the `dn()` command, then add symbolic links with the `add`-method.
 
-The `add`-method requires at least 2 arguments: the symbolic link name and a value (either numerical or string). The optinal third can specify a unit for the value. The symbolic link will be stored to typeset both number and unit in a nice way, with the `units` package (`\unit{<value}{<unit>}`).
+The `add`-method requires at least 2 arguments: the symbolic link name and a value (either numerical or string). The optional third can specify a unit for the value. The symbolic link will be stored to typeset both number and unit in a nice way, with the `units` package (`\unit{<value}{<unit>}`).
 
 Example (in Python, MATLAB code is almost identical)
 
@@ -73,12 +75,14 @@ temp_predictions.add('tomorrow',temparture,'C') # or \\Celcius instead of C
 
 **Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also used for escape sequences.
 
-### Contributions
+Contributions
+-------------
 
 The libraries are basic in a sense that they do not have a lot of features or options. This is intentional. Users can easily adopt them to suit their own needs without having to go through 100s of lines of code and the learning curve is very small. So the main goal is to have a library that support many platforms, is (almost) identical on all these platforms and is simple to use.
 
 Bug fixes and small feature improvements are always welcome, you can use a pull request to add must-have features or perform bug fixes.
 
-### License
+License
+-------
 
-See the `LICENSE` file.
+See the `LICENSE.txt` file.
