@@ -13,18 +13,18 @@
 %
 % \iffalse
 %<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<package>\ProvidesPackage{dn}
-%<package>   [2015/10/01 v1.0 Dynamic Number package: load symbolic links]
+%<package>\ProvidesPackage{dynamicnumber}
+%<package>   [2015/10/04 v0.1 Dynamic Number package]
 %
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{dn}
+\usepackage{dynamicnumber}
 \usepackage{hyperref}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
 \begin{document}
-  \DocInput{dn.dtx}
+  \DocInput{dynamicnumber.dtx}
 \end{document}
 %</driver>
 % \fi
@@ -50,24 +50,23 @@
 %
 % \changes{v1.0}{<YYYY>/<MM>/<DD>}{Initial version}
 %
-% \GetFileInfo{dn.sty}
+% \GetFileInfo{dynamicnumber.sty}
 %
 % \DoNotIndex{<list of control sequences>}
 %
-% \title{The \textsf{dn} package\thanks{This document
-%   corresponds to \textsf{dn}~\fileversion,
+% \title{The \textsf{dynamicnumber} package\thanks{This document
+%   corresponds to \textsf{dynamicnumber}~\fileversion,
 %   dated \filedate.}}
-% \author{Olivier Pieters \\ \texttt{no-mail}}
+% \author{Olivier Pieters \\ \texttt{me@olivierpieters.be}}
 %
 % \maketitle
 %
-% \begin{abstract}
-%   Put text here.
-% \end{abstract}
-%
 % \section{Introduction}
 %
-% Put text here.
+% Dynamic Number dynamically typesets values generated in different kinds of
+% scripts in LaTeX through the use of symbolic links. The aim is to reduce
+% errors resulting from out-of-date numbers by directly setting them in the
+% number generating file and importing a symbolic link in the LaTeX source file.
 %
 % \section{Usage}
 %
