@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set package name
-PCK="dn"
+PCK="dynamicnumber"
 
 echo "Checking requirements..."
 if [ "$(command -v latex)" = "" -o "$(command -v pdflatex)" = "" ]; then
