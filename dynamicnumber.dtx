@@ -108,6 +108,10 @@
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
+% Create input stream
+%    \begin{macrocode}
+\newread\dninstream
+%    \end{macrocode}
 % \begin{macro}{\@IfNoValueOrEmptyTF}
 % Tests if a parameter is empty using expl3.
 % Performs a double check to make sure it really is empty.
@@ -174,13 +178,12 @@
 %    \begin{macrocode}
 \DeclareDocumentCommand{\dnload}{m}{%
     \IfFileExists{#1.dnlist}{%
-        \newread\ccinstream
-        \immediate\openin\ccinstream=#1.dnlist
-        \@whilesw\unless\ifeof\ccinstream\fi{%
-            \immediate\read\ccinstream to \@auxcommand
+        \immediate\openin\dninstream=#1.dnlist
+        \@whilesw\unless\ifeof\dninstream\fi{%
+            \immediate\read\dninstream to \@auxcommand
             \@auxcommand
         }%
-        \immediate\closein\ccinstream%
+        \immediate\closein\dninstream%
         \dnsetcurrent{#1}%
     }{}%
 }
