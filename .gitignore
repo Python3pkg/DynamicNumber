@@ -1,13 +1,20 @@
-.idea
+# python files
 *.pyc
+
+# tex build files
 *.aux
 *.log
 *.pdf
-*.gz
-*.dnlist
-*~
 *.glo
 *.idx
 *.out
 *.sty
 *.gz*
+dynamicnumber
+
+
+# package specific files
+*.dnlist
+
+# other files
+*~
