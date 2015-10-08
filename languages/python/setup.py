@@ -8,10 +8,6 @@ from shutil import copyfile
 
 here = path.abspath(path.dirname(__file__))
 
-# Copy README from top dir
-copyfile('../../README.md','./README.md')
-system('pandoc --from=markdown --to=rst --output=README.rst README.md')
-
 # Get the long description from the README file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
@@ -19,7 +15,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='dynamicnumber',
 
-    version='0.1.1',
+    version='0.1.2',
 
     description='Dynamically export variables for reporting in LaTeX.',
     long_description=long_description,
@@ -65,5 +61,3 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
 )
-
-remove('./README.md')
