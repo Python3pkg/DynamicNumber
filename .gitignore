@@ -18,3 +18,8 @@ dynamicnumber
 
 # other files
 *~
+README.rst
+languages/python/dynamicnumber.egg-info
+languages/python/dist
+.pypirc
+upload.sh
