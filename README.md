@@ -19,19 +19,6 @@ Depending on your desires, one or more might not be applicable. All the supporte
 
 Currently the package is also available on CTAN. This is the preferred way of installing LaTeX packages. You can thus download it using your favourite (La)TeX package manager. The instructions below are thus obsolete.
 
-#### Linux and OS X
-
-Run the installation file in terminal: `source install.sh`.
-
-#### Windows
-
-For Windows, there is not yet a script. You must install it manually and add it to MiKTeX.
-
-1. Open the command line (`CTRL-R` and type `cmd`).
-2. Create the package with: `latex dynamicnumber.ins`.
-3. Extract the documentation to pdf with: `pdflatex dynamicnumber.dtx`.
-4. Use the instructions in [this](http://tex.stackexchange.com/questions/2063/how-can-i-manually-install-a-package-on-miktex-windows)
-
 ### MATLAB
 
 Add the necessary functions to MATLAB's path.
@@ -43,9 +30,7 @@ Add the necessary functions to MATLAB's path.
 
 ### Python
 
-**TODO** Add to PyPI if stable.
-
-For the moment, add it to your project directory.
+Install with `pip`: `sudo pip install dynamicnumber`
 
 Quick start
 -----------
