@@ -1,5 +1,11 @@
-# python files
+# python (dist) files
 *.pyc
+README.rst
+languages/python/dynamicnumber.egg-info
+languages/python/dist
+languages/python/build
+.pypirc
+upload.sh
 
 # tex build files
 *.aux
@@ -18,8 +24,3 @@ dynamicnumber
 
 # other files
 *~
-README.rst
-languages/python/dynamicnumber.egg-info
-languages/python/dist
-.pypirc
-upload.sh
