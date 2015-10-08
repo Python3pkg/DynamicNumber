@@ -1,38 +1,31 @@
-"""A setuptools based setup module.
-See:
-https://packaging.python.org/en/latest/distributing.html
-https://github.com/pypa/sampleproject
-"""
+"""A setuptools based setup module for Dynamic Number"""
 
-# Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
-from os import path, remove
+from os import path, remove, system
 from shutil import copyfile
 
 here = path.abspath(path.dirname(__file__))
 
 # Copy README from top dir
-copyfile('../../README.md','./README')
+copyfile('../../README.md','./README.md')
+system('pandoc --from=markdown --to=rst --output=README.rst README.md')
 
 # Get the long description from the README file
-with open(path.join(here, 'README'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='Dynamic Number',
+    name='dynamicnumber',
 
-    # Versions should comply with PEP440.  For a discussion on single-sourcing
-    # the version across setup.py and the project code, see
-    # https://packaging.python.org/en/latest/single_source_version.html
     version='0.1.1',
 
     description='Dynamically export variables for reporting in LaTeX.',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/opieters/DynamicNumber#what-is-it',
+    url='https://github.com/opieters/DynamicNumber',
 
     # Author details
     author='Olivier Pieters',
@@ -73,4 +66,4 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
 )
 
-remove('./README')
+remove('./README.md')
