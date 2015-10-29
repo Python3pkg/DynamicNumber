@@ -29,7 +29,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{58}
+% \CheckSum{48}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -124,9 +124,9 @@
  {
   \IfNoValueTF{#1}{#2}
    {
-%   \end{macrocode}
+%    \end{macrocode}
 %   Order: |{argument}{if empty}{if not empty}|
-%   \begin{macrocode}
+%    \begin{macrocode}
     \tl_if_empty:nTF {#1} {#2} {#3}
    }
  }
@@ -157,14 +157,14 @@
 %    \begin{macrocode}
 \DeclareDocumentCommand{\dnsetcurrent}{m}{%
 	\@ifundefined{dncurrent}{%
-%   \end{macrocode}
+%    \end{macrocode}
 %   \begin{macro}{\dncurrent}
 %   Stores the current dn list used in the |\dnget| command.
-%       \begin{macrocode}
+%    \begin{macrocode}
 		    \DeclareDocumentCommand{\dncurrent}{}{#1}%
-%       \end{macrocode}
+%    \end{macrocode}
 %   \end{macro}
-%   \begin{macrocode}
+%    \begin{macrocode}
 	}
 	{%
 		\RenewDocumentCommand{\dncurrent}{}{#1}%
