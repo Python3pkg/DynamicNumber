@@ -4,20 +4,16 @@ Dynamic Number
 What is it?
 -----------
 
-Dynamic Number dynamically typesets values generated in different kinds of scripts in LaTeX through the use of symbolic links. The aim is to reduce errors resulting from out-of-date numbers by directly setting them in the number generating file and importing a symbolic link in the LaTeX source file.
-
-It can be used to import not only numerical values into LaTeX, but even strings and pieces of code are possible. The main repository is located in [this](https://github.com/opieters/DynamicNumber) repository.
-
-**Attention** The symbolic links mentioned here are ***NOT*** related in any kind to the symbolic links used in UNIX systems. See example below to see what is meant with a symbolic link.
+Dynamic Number enables to create logic links (LLs) between programmes and LaTeX reports. This for instance allows one to process measurement data and insert the output through a logical reference instead of just copying the number. This allows to automatically update values (and other outputs) to reports to ensure values are always up-to-date. It can be used to import not only numerical values into LaTeX, but even strings and pieces of code are possible.
 
 Installation
 ------------
 
-Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (dn) list files (also called symbolic link lists).
+Depending on your desires, one or more might not be applicable. All the supported languages have a file in the `languages` folder. Currently only MATLAB and Python are supported to produce Dynamic Number (`.dnlist`) list files (also called logic link lists).
 
 ### LaTeX
 
-Currently the package is also available on CTAN. This is the preferred way of installing LaTeX packages. You can thus download it using your favourite (La)TeX package manager. The instructions below are thus obsolete.
+Currently the package is also available on CTAN. This is the preferred way of installing LaTeX packages. You can thus download it using your favourite (La)TeX package manager.
 
 ### MATLAB
 
@@ -55,7 +51,7 @@ Example (in Python, MATLAB code is almost identical)
 # Some computations and sensor readout to predict temperature tomorrow:
 temperature = 23.4
 temp_predictions = dn('TemperaturePredictions')
-temp_predictions.add('tomorrow',temparture,'C') # or \\Celcius instead of C
+temp_predictions.add('tomorrow', temparture, 'C') # or \\Celcius instead of C
 ```
 
 **Note!**: If you wish to use special LaTeX commands such as `\Celcius` or `\metre`, your need to be careful with the use of the backslash. In MATLAB you only need to add one backslash because of the way it is parsed, but in Python you need to add two of them! This is needed because the backslash is also used for escape sequences.
